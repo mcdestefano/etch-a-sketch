@@ -1,5 +1,12 @@
 const container = document.querySelector('.container');
+let drawing = false;
 
+container.addEventListener('mousedown', () => {
+    drawing = true;
+})
+container.addEventListener('mouseup', () => {
+    drawing = false;
+})
 
 function generateGrid(size){
     while (container.hasChildNodes()) {
@@ -12,9 +19,11 @@ function generateGrid(size){
         for (let j = 0; j<size; j++){
           const tile = document.createElement('div');
           tile.classList.add('tile');
-          tile.style.cssText = "width: 25px; height: 25px; border-width: 1px; border-style: solid; border-color: black; flex: 1;"
+          tile.style.cssText = "flex: 1;";
           tile.addEventListener('mouseenter', () => {
-            tile.classList.add('colored');
+            if(drawing){
+                tile.classList.add('colored');
+            }
           })
           row.appendChild(tile);
         }
@@ -23,8 +32,6 @@ function generateGrid(size){
 }
 
 generateGrid(16);
-
-
 
 const resetButton = document.querySelector('.reset');
 
