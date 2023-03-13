@@ -7,6 +7,9 @@ container.addEventListener('mousedown', () => {
 container.addEventListener('mouseup', () => {
     drawing = false;
 })
+container.addEventListener('mouseleave', () => {
+    drawing = false;
+})
 
 function generateGrid(size){
     while (container.hasChildNodes()) {
